@@ -28,10 +28,6 @@ body {
     .login-form{
         margin-top: 10%;
     }
-
-    .register-form{
-        margin-top: 10%;
-    }
 }
 
 @media screen and (min-width: 768px){
@@ -49,10 +45,6 @@ body {
 
     .login-form{
         margin-top: 80%;
-    }
-
-    .register-form{
-        margin-top: 20%;
     }
 }
 

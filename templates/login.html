@@ -4,12 +4,12 @@
 {% block content %}
     <head>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/login.css') }}">
-        <title>login</title>
+        <title>Login</title>
     </head>
     <div class="sidenav">
         <div class="login-main-text">
             <h2>Login<br> Cine Família</h2>
-            <p>Cadastre ou registre sua conta aqui.</p>
+            <p>Facilitando sua vida!</p>
         </div>
     </div>
     <div class="main">
@@ -24,8 +24,14 @@
                         <label>Senha</label>
                         <input type="password" class="form-control" placeholder="Digite sua senha">
                     </div>
-                    <button type="submit" class="btn btn-black">Entrar</button>
-                    <button type="submit" class="btn btn-secondary">Registrar</button>
+                    <div class="row justify-content-between">
+                        <div class="col-6">
+                            <p>Não tem uma conta? <a href="/register">Registre-se</a> </p>
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-black">Entrar</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
