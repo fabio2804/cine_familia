@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+{% set active_page = 'login' %}
+
+{% block content %}
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/login.css') }}">
+        <title>login</title>
+    </head>
+    <div class="sidenav">
+        <div class="login-main-text">
+            <h2>Login<br> Cine Família</h2>
+            <p>Cadastre ou registre sua conta aqui.</p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+                <form>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control" placeholder="Digite seu e-mail">
+                    </div>
+                    <div class="form-group">
+                        <label>Senha</label>
+                        <input type="password" class="form-control" placeholder="Digite sua senha">
+                    </div>
+                    <button type="submit" class="btn btn-black">Entrar</button>
+                    <button type="submit" class="btn btn-secondary">Registrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
