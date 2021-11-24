@@ -22,6 +22,22 @@ def login_required(f):
 def home():
     return render_template('home.html')
 
+@app.route('/films')
+def films():
+    return render_template('film.html')
+
+@app.route('/actors')
+def actors():
+    return render_template('actor.html')
+
+@app.route('/clients')
+def clients():
+    return render_template('client.html')
+
+@app.route('/rents')
+def rents():
+    return render_template('rent.html')
+
 
 @app.route('/login')
 def login():
