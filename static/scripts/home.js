@@ -29,5 +29,5 @@ window.onload = function() {
 }
 
 function logout() {
-    console.log("Ta funcionando");
+    window.location.href="/logout";
 }
