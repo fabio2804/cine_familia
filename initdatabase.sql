@@ -50,6 +50,14 @@ create table aluguel (
     data_fim DateTime
 );
 
+create table usuario (
+	id int not null auto_increment,
+    nome varchar(200) not null,
+	email varchar(200) not null,
+    pass varchar(200) not null,
+    primary KEY (id)
+);
+
 ALTER TABLE filme ADD FOREIGN KEY (filme_atores) REFERENCES filme_ator(id);
 ALTER TABLE ator ADD FOREIGN KEY (ator_filmes) REFERENCES filme_ator(id);
 ALTER TABLE aluguel ADD FOREIGN KEY (cliente_id) REFERENCES cliente(id);
