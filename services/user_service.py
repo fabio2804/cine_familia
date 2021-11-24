@@ -10,6 +10,7 @@ class UserService:
         query = f"""
             select * from usuario
             where email = '{email}' and pass = '{password}'
+            limit 1
         """
 
         return self.db.read_sql(query)
