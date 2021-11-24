@@ -17,8 +17,8 @@
 						<h2>Gerenciar <b>Atores</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><span data-feather="plus-circle"></span> <span>Add New Employee</span></a>
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><span data-feather="minus-circle"></span> <span>Delete</span></a>
+						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><span data-feather="plus-circle"></span> <span>Adicionar novo ator</span></a>
+						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><span data-feather="minus-circle"></span> <span>Deletar</span></a>
 					</div>
 				</div>
 			</div>
@@ -31,11 +31,10 @@
 								<label for="selectAll"></label>
 							</span>
 						</th>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Address</th>
-						<th>Phone</th>
-						<th>Actions</th>
+						<th>Nome</th>
+						<th>Filmes</th>
+						<th>Nacionalidade</th>
+						<th>Ações</th>
 					</tr>
 				</thead>
 				<tbody>				
@@ -49,7 +48,6 @@
 						<td>Martin Blank</td>
 						<td>martinblank@mail.com</td>
 						<td>Via Monte Bianco 34, Turin, Italy</td>
-						<td>(480) 631-2097</td>
 						<td>
 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><span data-feather="edit"></span></a>
 							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><span data-feather="trash-2"></span></a>
@@ -58,7 +56,7 @@
 				</tbody>
 			</table>
 			<div class="clearfix">
-				<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+				<div class="hint-text">Exibindo <b>5</b> de <b>25</b> atores</div>
 				<ul class="pagination">
 					<li class="page-item disabled"><a href="#">Previous</a></li>
 					<li class="page-item"><a href="#" class="page-link">1</a></li>
@@ -78,30 +76,26 @@
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">						
-					<h4 class="modal-title">Add Employee</h4>
+					<h4 class="modal-title">Adicionar Ator</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
 					<div class="form-group">
-						<label>Name</label>
+						<label>Nome</label>
 						<input type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Email</label>
+						<label>Filmes</label>
 						<input type="email" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Address</label>
+						<label>Nacionalidade</label>
 						<textarea class="form-control" required></textarea>
 					</div>
-					<div class="form-group">
-						<label>Phone</label>
-						<input type="text" class="form-control" required>
-					</div>					
 				</div>
 				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-success" value="Add">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+					<input type="submit" class="btn btn-success" value="Adicionar">
 				</div>
 			</form>
 		</div>
@@ -113,30 +107,26 @@
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">						
-					<h4 class="modal-title">Edit Employee</h4>
+					<h4 class="modal-title">Editar Ator</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
 					<div class="form-group">
-						<label>Name</label>
+						<label>Nome</label>
 						<input type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Email</label>
+						<label>Filmes</label>
 						<input type="email" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Address</label>
+						<label>Nacionalidade</label>
 						<textarea class="form-control" required></textarea>
-					</div>
-					<div class="form-group">
-						<label>Phone</label>
-						<input type="text" class="form-control" required>
-					</div>					
+					</div>			
 				</div>
 				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-info" value="Save">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+					<input type="submit" class="btn btn-info" value="Salvar">
 				</div>
 			</form>
 		</div>
@@ -148,16 +138,16 @@
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">						
-					<h4 class="modal-title">Delete Employee</h4>
+					<h4 class="modal-title">Deletar Ator</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
-					<p>Are you sure you want to delete these Records?</p>
-					<p class="text-warning"><small>This action cannot be undone.</small></p>
+					<p>Tem certeza que deseja deletar?</p>
+					<p class="text-warning"><small>Esta ação não pode ser desfeita.</small></p>
 				</div>
 				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+					<input type="submit" class="btn btn-danger" value="Deletar">
 				</div>
 			</form>
 		</div>

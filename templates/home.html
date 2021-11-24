@@ -33,15 +33,27 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ url_for('films') }}">
                                 <span data-feather="film"></span>
                                 Filmes
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ url_for('actors') }}">
                                 <span data-feather="user"></span>
                                 Atores
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('clients') }}">
+                                <span data-feather="users"></span>
+                                Clientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('rents') }}">
+                                <span data-feather="clipboard"></span>
+                                Aluguéis
                             </a>
                         </li>
                     </ul>
