@@ -16,10 +16,10 @@ class UserService:
         return self.db.read_sql(query)
 
     def insert_user(self, nome, email, password):
-        query = f""""
+        query = f"""
             insert into 
                 usuario
-            (nome, email, password)
+            (nome, email, pass)
                 values
             ('{nome}', '{email}', '{password}')
         """
