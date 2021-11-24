@@ -31,8 +31,9 @@
 								<label for="selectAll"></label>
 							</span>
 						</th>
+						<th>ID</th>
 						<th>Nome</th>
-						<th>Filmes</th>
+						<th>Filme(s)</th>
 						<th>Nacionalidade</th>
 						<th>Ações</th>
 					</tr>
@@ -45,9 +46,10 @@
 								<label for="checkbox5"></label>
 							</span>
 						</td>
-						<td>Martin Blank</td>
-						<td>martinblank@mail.com</td>
-						<td>Via Monte Bianco 34, Turin, Italy</td>
+						<td>1</td>
+						<td>Daniel Radcliff</td>
+						<td>Harry Potter</td>
+						<td>Estadunidense</td>
 						<td>
 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><span data-feather="edit"></span></a>
 							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><span data-feather="trash-2"></span></a>
@@ -56,15 +58,15 @@
 				</tbody>
 			</table>
 			<div class="clearfix">
-				<div class="hint-text">Exibindo <b>5</b> de <b>25</b> atores</div>
+				<div class="hint-text">Exibindo <b>{{5}}</b> de <b>{{25}}</b> Atores</div>
 				<ul class="pagination">
-					<li class="page-item disabled"><a href="#">Previous</a></li>
+					<li class="page-item disabled"><a href="#">Anterior</a></li>
 					<li class="page-item"><a href="#" class="page-link">1</a></li>
 					<li class="page-item"><a href="#" class="page-link">2</a></li>
 					<li class="page-item active"><a href="#" class="page-link">3</a></li>
 					<li class="page-item"><a href="#" class="page-link">4</a></li>
 					<li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link">Next</a></li>
+					<li class="page-item"><a href="#" class="page-link">Próxima</a></li>
 				</ul>
 			</div>
 		</div>
@@ -79,24 +81,23 @@
 					<h4 class="modal-title">Adicionar Ator</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="modal-body">					
+				<div class="modal-body">
 					<div class="form-group">
-						<label>Nome</label>
-						<input type="text" class="form-control" required>
+						<label for="name">Nome</label>
+						<input id="name" name="name" type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Filmes</label>
-						<input type="email" class="form-control" required>
+						<label for="films">Filme(s)</label>
+						<select id="films" name="films" class="custom-select">
+							<option value="{{i}}">Aqui vai o for de filmes</option>
+						</select>
 					</div>
 					<div class="form-group">
-						<label>Nacionalidade</label>
-						<textarea class="form-control" required></textarea>
+						<label for="nationality">Nacionalidade</label>
+						<select id="nationality" name="nationality" class="custom-select">
+							<option value="{{i}}">Aqui vai o for de nacionalidades</option>
+						</select>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-					<input type="submit" class="btn btn-success" value="Adicionar">
-				</div>
 			</form>
 		</div>
 	</div>
@@ -110,19 +111,23 @@
 					<h4 class="modal-title">Editar Ator</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="modal-body">					
+				<div class="modal-body">
 					<div class="form-group">
-						<label>Nome</label>
-						<input type="text" class="form-control" required>
+						<label for="name">Nome</label>
+						<input id="name" name="name" type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Filmes</label>
-						<input type="email" class="form-control" required>
+						<label for="films">Filme(s)</label>
+						<select id="films" name="films" class="custom-select">
+							<option value="{{i}}">Aqui vai o for de filmes</option>
+						</select>
 					</div>
 					<div class="form-group">
-						<label>Nacionalidade</label>
-						<textarea class="form-control" required></textarea>
-					</div>			
+						<label for="nationality">Nacionalidade</label>
+						<select id="nationality" name="nationality" class="custom-select">
+							<option value="{{i}}">Aqui vai o for de nacionalidades</option>
+						</select>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
@@ -137,12 +142,12 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form>
-				<div class="modal-header">						
+				<div class="modal-header">
 					<h4 class="modal-title">Deletar Ator</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
-					<p>Tem certeza que deseja deletar?</p>
+					<p>Tem certeza que deseja excluir este Ator?</p>
 					<p class="text-warning"><small>Esta ação não pode ser desfeita.</small></p>
 				</div>
 				<div class="modal-footer">

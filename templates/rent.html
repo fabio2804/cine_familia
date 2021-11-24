@@ -17,8 +17,8 @@
 						<h2>Gerenciar <b>Aluguéis</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><span data-feather="plus-circle"></span> <span>Adicionar Aluguél</span></a>
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><span data-feather="minus-circle"></span> <span>Deletar</span></a>
+						<a href="#addRentModal" class="btn btn-success" data-toggle="modal"><span data-feather="plus-circle"></span> <span>Adicionar Aluguél</span></a>
+						<a href="#deleteRentModal" class="btn btn-danger" data-toggle="modal"><span data-feather="minus-circle"></span> <span>Deletar</span></a>
 					</div>
 				</div>
 			</div>
@@ -31,8 +31,9 @@
 								<label for="selectAll"></label>
 							</span>
 						</th>
+						<th>ID</th>
 						<th>Cliente</th>
-						<th>Filme</th>
+						<th>Filme(s)</th>
 						<th>Data Inicio</th>
 						<th>Data Fim</th>
 						<th>Ações</th>
@@ -46,19 +47,20 @@
 								<label for="checkbox5"></label>
 							</span>
 						</td>
-						<td>Martin Blank</td>
-						<td>martinblank@mail.com</td>
-						<td>Via Monte Bianco 34, Turin, Italy</td>
-						<td>(480) 631-2097</td>
+						<td>1</td>
+						<td>Cleitin</td>
+						<td>Harry Potter</td>
+						<td>24/11/2021</td>
+						<td>30/11/2021</td>
 						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><span data-feather="edit"></span></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><span data-feather="trash-2"></span></a>
+							<a href="#editRentModal" class="edit" data-toggle="modal"><span data-feather="edit"></span></a>
+							<a href="#deleteRentModal" class="delete" data-toggle="modal"><span data-feather="trash-2"></span></a>
 						</td>
 					</tr> 
 				</tbody>
 			</table>
 			<div class="clearfix">
-				<div class="hint-text">Mostrando <b>5</b> de <b>25</b> alguéis</div>
+				<div class="hint-text">Exibindo <b>5</b> de <b>25</b> Aluguéis</div>
 				<ul class="pagination">
 					<li class="page-item disabled"><a href="#">Previous</a></li>
 					<li class="page-item"><a href="#" class="page-link">1</a></li>
@@ -73,31 +75,35 @@
 	</div>        
 </div>
 <!-- Add Modal HTML -->
-<div id="addEmployeeModal" class="modal fade">
+<div id="addRentModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">						
-					<h4 class="modal-title">Adcionar Aluguél</h4>
+					<h4 class="modal-title">Adcionar Aluguel</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="modal-body">					
+				<div class="modal-body">
 					<div class="form-group">
-						<label>Cliente</label>
-						<input type="text" class="form-control" required>
+						<label for="client">Cliente</label>
+						<select id="client" name="client">
+							<option value="{{i}}">Aqui vai o for de clientes</option>
+						</select>
 					</div>
 					<div class="form-group">
-						<label>Filme</label>
-						<input type="email" class="form-control" required>
+						<label for="films">Filme(s)</label>
+						<select id="films" name="films">
+							<option value="{{i}}">Aqui vai o for de filmes</option>
+						</select>
 					</div>
 					<div class="form-group">
-						<label>Data Inicio</label>
-						<textarea class="form-control" required></textarea>
+						<label for="initialDate">Data Inicial</label>
+						<input id="initialDate" name="initialDate" type="date" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Data Fim</label>
-						<input type="text" class="form-control" required>
-					</div>					
+						<label for="finalDate">Data Final</label>
+						<input id="finalDate" name="finalDate" type="date" class="form-control" required>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
@@ -108,31 +114,35 @@
 	</div>
 </div>
 <!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
+<div id="editRentModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">						
-					<h4 class="modal-title">Editar Alguél</h4>
+					<h4 class="modal-title">Editar Alguel</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="modal-body">					
+				<div class="modal-body">
 					<div class="form-group">
-						<label>Cliente</label>
-						<input type="text" class="form-control" required>
+						<label for="client">Cliente</label>
+						<select id="client" name="client">
+							<option value="{{i}}">Aqui vai o for de clientes</option>
+						</select>
 					</div>
 					<div class="form-group">
-						<label>Filme</label>
-						<input type="email" class="form-control" required>
+						<label for="films">Filme(s)</label>
+						<select id="films" name="films">
+							<option value="{{i}}">Aqui vai o for de filmes</option>
+						</select>
 					</div>
 					<div class="form-group">
-						<label>Data Inicio</label>
-						<textarea class="form-control" required></textarea>
+						<label for="initialDate">Data Inicial</label>
+						<input id="initialDate" name="initialDate" type="date" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Data Fim</label>
-						<input type="text" class="form-control" required>
-					</div>					
+						<label for="finalDate">Data Final</label>
+						<input id="finalDate" name="finalDate" type="date" class="form-control" required>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
@@ -143,16 +153,16 @@
 	</div>
 </div>
 <!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
+<div id="deleteRentModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form>
-				<div class="modal-header">						
-					<h4 class="modal-title">Deletar Aluguél</h4>
+				<div class="modal-header">
+					<h4 class="modal-title">Deletar Aluguel</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="modal-body">					
-					<p>Tem certeza que seja deletar?</p>
+				<div class="modal-body">
+					<p>Tem certeza que deseja excluir este Aluguel?</p>
 					<p class="text-warning"><small>Esta ação não pode ser desfeita.</small></p>
 				</div>
 				<div class="modal-footer">
