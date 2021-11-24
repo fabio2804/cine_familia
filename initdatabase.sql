@@ -20,12 +20,15 @@ create table ator (
 );
 
 create table filme (
-    id int primary key not null auto_increment,
-    titulo varchar(80),
-    data_lancamento DateTime,
-    filme_atores int,
-    genero int,
-    CONSTRAINT fk_filme_genero FOREIGN KEY (genero) REFERENCES genero(id)
+  id int not null primary key auto_increment,
+  ano_de_exibicao int,
+  titulo_da_obra varchar(200),
+  genero varchar(100),
+  pais_produtor_obra varchar(200),
+  nacionalidade_obra varchar(200),
+  data_lancamento datetime,
+  distribuidora varchar(200),
+  origem_da_empresa_distribuidora varchar(200)
 );
 
 create table filme_ator (
