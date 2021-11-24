@@ -33,12 +33,12 @@ def register():
     return render_template('register.html')
 
 
-@app.route('/autenticar', methods=['POST'])
-def autenticar():
+@app.route('/autenticate', methods=['POST'])
+def autenticate():
     usuario = user_service.get_user(request.form.get('email'), request.form.get('password'))
 
     if usuario.empty:
-        flash('login incorreto! Tente novamente', 'Error')
+        flash('Login incorreto! Tente novamente', 'Error')
         return redirect(url_for('login'))
 
     session['email'] = usuario['email'][0]
@@ -47,6 +47,20 @@ def autenticar():
 
     return redirect(url_for('home'))
 
+@app.route('/createaccount', methods=['POST'])
+def create_account():
+    user_service.insert_user(request.form.get('name'), request.form.get('email'), request.form.get('password'))
+    usuario = user_service.get_user(request.form.get('email'), request.form.get('password'))
+
+    if usuario.empty:
+        flash('Algo deu errado! Tente novamente', 'Error')
+        return redirect(url_for('login'))
+
+    session['email'] = usuario['email'][0]
+    session['id'] = int(usuario['id'][0])
+    session['nome'] = usuario['nome'][0]
+
+    return redirect(url_for('home'))
 
 @app.route('/logout')
 def logout():

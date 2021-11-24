@@ -15,14 +15,14 @@
     <div class="main">
         <div class="col-md-6 col-sm-12">
             <div class="login-form">
-                <form action="{{ url_for('autenticar') }}" method="POST">
+                <form action="{{ url_for('autenticate') }}" method="POST">
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" name="email" required placeholder="Digite seu e-mail">
+                        <input type="email" id="email" required class="form-control" name="email" placeholder="Digite seu e-mail">
                     </div>
                     <div class="form-group">
                         <label for="password">Senha</label>
-                        <input type="password" id="password" class="form-control" name=password required placeholder="Digite sua senha">
+                        <input type="password" id="password" required class="form-control" name="password" placeholder="Digite sua senha">
                     </div>
                     <button type="submit" class="btn btn-black">Entrar</button>
                     <button type="button" class="btn btn-secondary" onclick="window.location.href='{{ url_for('register') }}'">Registrar</button>
