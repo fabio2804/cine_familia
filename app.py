@@ -14,7 +14,13 @@ def login_required(f):
             return redirect(url_for('login', next=request.url))
 
         return f(*args, **kwargs)
+
     return decorated_function
+
+
+@app.route('/')
+def __redirect():
+    return redirect(url_for('home'))
 
 
 @app.route('/home')
@@ -22,17 +28,21 @@ def login_required(f):
 def home():
     return render_template('home.html')
 
+
 @app.route('/films')
 def films():
     return render_template('film.html')
+
 
 @app.route('/actors')
 def actors():
     return render_template('actor.html')
 
+
 @app.route('/clients')
 def clients():
     return render_template('client.html')
+
 
 @app.route('/rents')
 def rents():
@@ -63,6 +73,7 @@ def autenticate():
 
     return redirect(url_for('home'))
 
+
 @app.route('/createaccount', methods=['POST'])
 def create_account():
     user_service.insert_user(request.form.get('name'), request.form.get('email'), request.form.get('password'))
@@ -77,6 +88,7 @@ def create_account():
     session['nome'] = usuario['nome'][0]
 
     return redirect(url_for('home'))
+
 
 @app.route('/logout')
 def logout():
