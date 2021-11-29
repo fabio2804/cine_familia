@@ -6,35 +6,21 @@ create table genero (
     nome varchar(20)
 );
 
-create table pais (
-    id int primary key not null auto_increment,
-    nome varchar(30)
-);
-
-create table ator (
-    id int primary key not null auto_increment,
-    nome varchar(120),
-    ator_filmes int,
-    nacionalidade int,
-    CONSTRAINT fk_ator_nacionalidade FOREIGN KEY (nacionalidade) REFERENCES pais(id)
+create table distribuidora (
+	id int primary key not null auto_increment,
+    nome varchar(200) not null
 );
 
 create table filme (
   id int not null primary key auto_increment,
   ano_de_exibicao int,
   titulo_da_obra varchar(200),
-  genero varchar(100),
+  genero_id int,
   pais_produtor_obra varchar(200),
   nacionalidade_obra varchar(200),
   data_lancamento datetime,
-  distribuidora varchar(200),
+  distribuidora_id int,
   origem_da_empresa_distribuidora varchar(200)
-);
-
-create table filme_ator (
-    id int primary key not null auto_increment,
-    filme_id int,
-    ator_id int
 );
 
 create table cliente (
@@ -61,7 +47,9 @@ create table usuario (
     primary KEY (id)
 );
 
-ALTER TABLE filme ADD FOREIGN KEY (filme_atores) REFERENCES filme_ator(id);
-ALTER TABLE ator ADD FOREIGN KEY (ator_filmes) REFERENCES filme_ator(id);
+ALTER TABLE filme ADD FOREIGN KEY (genero_id) REFERENCES genero(id);
+ALTER TABLE filme ADD FOREIGN KEY (distribuidora_id) REFERENCES distribuidora(id);
 ALTER TABLE aluguel ADD FOREIGN KEY (cliente_id) REFERENCES cliente(id);
 ALTER TABLE aluguel ADD FOREIGN KEY (filme_id) REFERENCES filme(id);
+
+insert into genero (id, nome) values(1, 'Ficção'), (2, 'Documentário'), (3, 'Animação'), (4, 'Videomusical');
