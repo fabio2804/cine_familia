@@ -1,10 +1,12 @@
 from functools import wraps
 from flask import Flask, render_template, request, flash, redirect, session, url_for
 from services.user_service import UserService
+from services.movie_service import MovieService
 
 app = Flask(__name__)
 app.secret_key = 'testando'
 user_service = UserService()
+movie_service = MovieService()
 
 
 def login_required(f):
@@ -26,12 +28,14 @@ def __redirect():
 @app.route('/home')
 @login_required
 def home():
+
     return render_template('home.html')
 
 
 @app.route('/films')
 def films():
-    return render_template('film.html')
+    dict_movies = movie_service.list_movies()
+    return render_template('film.html', movies=dict_movies)
 
 
 @app.route('/actors')
