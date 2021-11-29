@@ -1,5 +1,7 @@
 from functools import wraps
 from flask import Flask, render_template, request, flash, redirect, session, url_for
+from services.genre_service import GenreService
+from services.publisher_service import PublisherService
 from services.user_service import UserService
 from services.movie_service import MovieService
 
@@ -7,6 +9,8 @@ app = Flask(__name__)
 app.secret_key = 'testando'
 user_service = UserService()
 movie_service = MovieService()
+publisher_service = PublisherService()
+genre_service = GenreService()
 
 
 def login_required(f):
