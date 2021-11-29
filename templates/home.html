@@ -3,15 +3,15 @@
 
 {% block content %}
 
-<head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/home.css') }}">
-    <!-- Graphs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script src="{{ url_for('static', filename='scripts/home.js') }}"></script>
-    <title>Home</title>
-</head>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/home.css') }}">
+        <!-- Graphs -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+        <script src="{{ url_for('static', filename='scripts/home.js') }}"></script>
+        <title>Home</title>
+    </head>
 
-<body>
+    <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Cine Família. Seja bem vindo {{ session['nome'] }}</a>
         <ul class="navbar-nav px-3">
@@ -62,20 +62,21 @@
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                 <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dashboard</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span data-feather="calendar"></span>
                                 Filtre por tempo:
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Semana</a>
-                              <a class="dropdown-item" href="#">Mês</a>
-                              <a class="dropdown-item" href="#">Ano</a>
+                                <a class="dropdown-item" href="#">Semana</a>
+                                <a class="dropdown-item" href="#">Mês</a>
+                                <a class="dropdown-item" href="#">Ano</a>
                             </div>
-                          </div>
+                        </div>
                     </div>
                 </div>
 
@@ -85,20 +86,30 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
                         <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Filme</th>
-                                <th>Data Inicio</th>
-                                <th>Data Fim</th>
-                            </tr>
+                        <tr>
+                            <th>Ano de exibicao</th>
+                            <th>Titulo da obra</th>
+                            <th>Genero</th>
+                            <th>Pais produtor obra</th>
+                            <th>Nacionalidade obra</th>
+                            <th>Data lancamento</th>
+                            <th>Distribuidora</th>
+                            <th>Origem da empresa distribuidora</th>
+                        </tr>
                         </thead>
                         <tbody>
+                        {% for movie in movies %}
                             <tr>
-                                <td>1</td>
-                                <td>Harry Potter</td>
-                                <td>24/11/2021</td>
-                                <td>30/11/2021</td>
+                                <td>{{ movie.ano_de_exibicao }}</td>
+                                <td>{{ movie.titulo_da_obra }}</td>
+                                <td>{{ movie.genero }}</td>
+                                <td>{{ movie.pais_produtor_obra }}</td>
+                                <td>{{ movie.nacionalidade_obra }}</td>
+                                <td>{{ movie.data_lancamento }}</td>
+                                <td>{{ movie.distribuidora }}</td>
+                                <td>{{ movie.origem_da_empresa_distribuidora }}</td>
                             </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -106,5 +117,5 @@
         </div>
     </div>
 
-</body>
+    </body>
 {% endblock %}
