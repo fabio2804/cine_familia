@@ -1,5 +1,9 @@
 from functools import wraps
 from flask import Flask, render_template, request, flash, redirect, session, url_for
+from services.client_service import ClientService
+from services.genre_service import GenreService
+from services.publisher_service import PublisherService
+from services.rent_service import RentService
 from services.user_service import UserService
 from services.movie_service import MovieService
 
@@ -7,6 +11,10 @@ app = Flask(__name__)
 app.secret_key = 'testando'
 user_service = UserService()
 movie_service = MovieService()
+publisher_service = PublisherService()
+genre_service = GenreService()
+client_service = ClientService()
+rent_service = RentService()
 
 
 def login_required(f):
@@ -45,12 +53,14 @@ def actors():
 
 @app.route('/clients')
 def clients():
-    return render_template('client.html')
+    dict_clients = client_service.list_rents()
+    return render_template('client.html', clients=dict_clients)
 
 
 @app.route('/rents')
 def rents():
-    return render_template('rent.html')
+    dict_rents = rent_service.list_rents()
+    return render_template('rent.html', rents=dict_rents)
 
 
 @app.route('/login')

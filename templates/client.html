@@ -39,7 +39,8 @@
 						<th>Ações</th>
 					</tr>
 				</thead>
-				<tbody>				
+				<tbody>	
+				{% for client in clients %}
 					<tr>
 						<td>
 							<span class="custom-checkbox">
@@ -47,16 +48,17 @@
 								<label for="checkbox5"></label>
 							</span>
 						</td>
-						<td>1</td>
-						<td>Cleitinho</td>
-						<td>cleitin@hotmail.com</td>
-						<td>Aquela rua lá</td>
-						<td>(11) 91234-5678</td>
+						<td>{{ client.id }}</td>
+						<td>{{ client.nome }}</td>
+						<td>{{ client.email }}</td>
+						<td>{{ client.endereco }}</td>
+						<td>{{ client.celular }}</td>
 						<td>
 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><span data-feather="edit"></span></a>
 							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><span data-feather="trash-2"></span></a>
 						</td>
-					</tr> 
+					</tr>
+				{% endfor %}
 				</tbody>
 			</table>
 			<div class="clearfix">

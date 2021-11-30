@@ -39,7 +39,8 @@
 						<th>Ações</th>
 					</tr>
 				</thead>
-				<tbody>				
+				<tbody>	
+				{% for rent in rents %}
 					<tr>
 						<td>
 							<span class="custom-checkbox">
@@ -47,16 +48,17 @@
 								<label for="checkbox5"></label>
 							</span>
 						</td>
-						<td>1</td>
-						<td>Cleitin</td>
-						<td>Harry Potter</td>
-						<td>24/11/2021</td>
-						<td>30/11/2021</td>
+						<td>{{ rent.id }}</td>
+						<td>{{ rent.nome }}</td>
+						<td>{{ rent.titulo_da_obra }}</td>
+						<td>{{ rent.data_inicio }}</td>
+						<td>{{ rent.data_fim }}</td>
 						<td>
 							<a href="#editRentModal" class="edit" data-toggle="modal"><span data-feather="edit"></span></a>
 							<a href="#deleteRentModal" class="delete" data-toggle="modal"><span data-feather="trash-2"></span></a>
 						</td>
-					</tr> 
+					</tr>
+				{% endfor %} 
 				</tbody>
 			</table>
 			<div class="clearfix">
