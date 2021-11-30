@@ -5,7 +5,7 @@ class GenreService:
         self.db = db.Db()
         pass
 
-    def list_genre(self):
+    def list_genres(self):
         query = f"""
             select * from genero;
         """

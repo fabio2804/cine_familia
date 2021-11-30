@@ -13,7 +13,7 @@
 
     <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Cine Família. Seja bem vindo {{ session['nome'] }}</a>
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Cine Família. Seja bem vindo, {{ session['nome'] }}!</a>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
                 <a class="nav-link logout" onclick="logout()">Sair</a>
@@ -33,17 +33,17 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('films') }}">
+                            <a class="nav-link" href="{{ url_for('movies') }}">
                                 <span data-feather="film"></span>
-                                Filmes
+                                Movies
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('actors') }}">
                                 <span data-feather="user"></span>
                                 Atores
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('clients') }}">
                                 <span data-feather="users"></span>

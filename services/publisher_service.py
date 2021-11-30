@@ -5,7 +5,7 @@ class PublisherService:
         self.db = db.Db()
         pass
 
-    def list_publisher(self):
+    def list_publishers(self):
         query = f"""
             select * from distribuidora;
         """

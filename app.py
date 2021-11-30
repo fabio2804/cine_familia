@@ -40,10 +40,32 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/films')
-def films():
+@app.route('/movies')
+def movies():
     dict_movies = movie_service.list_movies()
-    return render_template('film.html', movies=dict_movies)
+    dict_genres = genre_service.list_genres()
+    dict_publishers = publisher_service.list_publishers()
+    return render_template('movie.html', movies=dict_movies, genres=dict_genres, publishers=dict_publishers)
+
+@app.route('/add_movie', methods=['POST'])
+def add_movie():
+    movie_service.insert_movie(request.form.get('title'), request.form.get('launch_date'), request.form.get('gender_id'), request.form.get('country'), request.form.get('year'), request.form.get('publisher_id'), request.form.get('origem_da_empresa_distribuidora'))
+    movie = movie_service.get_movie(request.form.get('title'))
+
+    if movie.empty:
+        flash('Algo deu errado! Tente novamente', 'Error')
+
+    return redirect(url_for('movies'))
+
+@app.route('/edit_movie', methods=['PUT'])
+def edit_movie():
+    movie_service.update_movie(request.form.get('id'), request.form.get('title'), request.form.get('launch_date'), request.form.get('gender_id'), request.form.get('country'), request.form.get('year'), request.form.get('publisher_id'), request.form.get('origem_da_empresa_distribuidora'))
+    movie = movie_service.get_movie(request.form.get('title'))
+
+    if movie.empty:
+        flash('Algo deu errado! Tente novamente', 'Error')
+
+    return redirect(url_for('movies'))
 
 
 @app.route('/actors')

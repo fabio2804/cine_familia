@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-sm-6">
                             <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><span
-                                    data-feather="plus-circle"></span> <span>Add New Employee</span></a>
+                                    data-feather="plus-circle"></span> <span>Add New Movie</span></a>
                             <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><span
                                     data-feather="minus-circle"></span> <span>Delete</span></a>
                         </div>
@@ -87,10 +87,10 @@
         </div>
     </div>
     <!-- Add Modal HTML -->
-    <div id="addEmployeeModal" class="modal fade">
+    <div id="addMovieModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form action="{{ url_for('add_movie') }}" method="POST">
                     <div class="modal-header">
                         <h4 class="modal-title">Adicionar Filme</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -101,19 +101,38 @@
                             <input id="title" name="title" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="launchDate">Data de Lançamento</label>
-                            <input id="launchDate" name="launchDate" type="text" class="form-control" required>
+                            <label for="launch_date">Data de Lançamento</label>
+                            <input id="launch_date" name="launch_date" type="date" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="actors">Ator(es)</label>
-                            <select id="actors" name="actors" class="custom-select">
-                                <option value="{{ i }}">Aqui vai o for de atores</option>
+                            <label for="gender_id">Gênero</label>
+                            <select id="gender_id" name="gender_id" class="custom-select">
+                                {% for genre in genres %}
+                                <option value="{{ genre.id }}">{{ genre.nome }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="gender">Gênero</label>
-                            <select id="gender" name="gender" class="custom-select">
-                                <option value="{{ i }}">Aqui vai o for de gêneros</option>
+                            <label for="country">País</label>
+                            <input id="country" name="country" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Ano de exibição</label>
+                            <input id="year" name="year" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="publisher_id">Distribuidora</label>
+                            <select id="publisher_id" name="publisher_id" class="custom-select">
+                                {% for publisher in publishers %}
+                                <option value="{{ publisher.id }}">{{ publisher.nome }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="origem_da_empresa_distribuidora">Nacionalidade da Distribuidora</label>
+                            <select id="origem_da_empresa_distribuidora" name="origem_da_empresa_distribuidora" class="custom-select">
+                                <option value="1">Nacional</option>
+                                <option value="2">Estrangeira</option>
                             </select>
                         </div>
                     </div>
@@ -126,10 +145,10 @@
         </div>
     </div>
     <!-- Edit Modal HTML -->
-    <div id="editEmployeeModal" class="modal fade">
+    <div id="editMovieModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form action="{{ url_for('edit_movie') }}" method="PUT">
                     <div class="modal-header">
                         <h4 class="modal-title">Editar Filme</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -140,22 +159,40 @@
                             <input id="title" name="title" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="launchDate">Data de Lançamento</label>
-                            <input id="launchDate" name="launchDate" type="date" class="form-control" required>
+                            <label for="launch_date">Data de Lançamento</label>
+                            <input id="launch_date" name="launch_date" type="date" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="actors">Ator(es)</label>
-                            <select id="actors" name="actors" class="custom-select">
-                                <option value="{{ i }}">Aqui vai o for de atores</option>
+                            <label for="gender_id">Gênero</label>
+                            <select id="gender_id" name="gender_id" class="custom-select">
+                                {% for genre in genres %}
+                                <option value="{{ genre.id }}">{{ genre.nome }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="gender">Gênero</label>
-                            <select id="gender" name="gender" class="custom-select">
-                                <option value="{{ i }}">Aqui vai o for de gêneros</option>
+                            <label for="country">País</label>
+                            <input id="country" name="country" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Ano de exibição</label>
+                            <input id="year" name="year" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="publisher_id">Distribuidora</label>
+                            <select id="publisher_id" name="publisher_id" class="custom-select">
+                                {% for publisher in publishers %}
+                                <option value="{{ publisher.id }}">{{ publisher.nome }}</option>
+                                {% endfor %}
                             </select>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="origem_da_empresa_distribuidora">Nacionalidade da Distribuidora</label>
+                            <select id="origem_da_empresa_distribuidora" name="origem_da_empresa_distribuidora" class="custom-select">
+                                <option value="1">Nacional</option>
+                                <option value="2">Estrangeira</option>
+                            </select>
+                        </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                         <input type="submit" class="btn btn-info" value="Salvar">
@@ -165,7 +202,7 @@
         </div>
     </div>
     <!-- Delete Modal HTML -->
-    <div id="deleteEmployeeModal" class="modal fade">
+    <div id="deleteMovieModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form>
@@ -174,7 +211,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <p>Tem certeza que deseja excluir este Filme?</p>
+                        <p>Tem certeza que deseja excluir o Filme "{{ selected_movie.name }}"?</p>
                         <p class="text-warning"><small>Essa ação não pode ser desfeita.</small></p>
                     </div>
                     <div class="modal-footer">
