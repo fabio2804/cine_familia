@@ -40,12 +40,20 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/movies')
-def movies():
-    dict_movies = movie_service.list_movies()
+@app.route('/movies', defaults={'page': 0})
+@app.route('/movies/<int:page>')
+
+def movies(page):
+    dict_movies = movie_service.list_movies(page)
+    movies_len = movie_service.get_movie_len()
     dict_genres = genre_service.list_genres()
     dict_publishers = publisher_service.list_publishers()
-    return render_template('movie.html', movies=dict_movies, genres=dict_genres, publishers=dict_publishers)
+    return render_template('movie.html',
+                           movies=dict_movies,
+                           genres=dict_genres,
+                           publishers=dict_publishers,
+                           index=page,
+                           movie_len=movies_len)
 
 @app.route('/add_movie', methods=['POST'])
 def add_movie():

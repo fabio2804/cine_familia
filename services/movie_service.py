@@ -1,5 +1,3 @@
-import pandas as pd
-
 import db
 
 
@@ -8,12 +6,14 @@ class MovieService:
         self.db = db.Db()
         pass
 
-    def list_movies(self):
+    def list_movies(self, page):
+        limit = page * 10
+
         query = f"""
-            select * from filme;
+            select * from filme limit {str(limit)}, 10;
         """
 
-        df = self.db.read_sql(query).head(50)
+        df = self.db.read_sql(query)
 
         df['data_lancamento'] = df['data_lancamento'].dt.strftime('%d/%m/%Y')
 
@@ -49,7 +49,8 @@ class MovieService:
 
         self.db.execute(query)
 
-    def update_movie(self, id, title, launch_date, gender_id, country, year, publisher_id, origem_da_empresa_distribuidora):
+    def update_movie(self, id, title, launch_date, gender_id, country, year, publisher_id,
+                     origem_da_empresa_distribuidora):
         if country == "Brasil":
             nacionalidade_obra = "Brasileira"
         else:
@@ -67,3 +68,10 @@ class MovieService:
         """
 
         self.db.execute(query)
+
+    def get_movie_len(self):
+        query = 'select count(*) from filme;'
+
+        df = self.db.read_sql(query)
+
+        return df.iloc[0][0]

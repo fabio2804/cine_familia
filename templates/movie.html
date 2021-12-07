@@ -72,15 +72,18 @@
                     </tbody>
                 </table>
                 <div class="clearfix">
-                    <div class="hint-text">Exibindo <b>{{ 5 }}</b> de <b>{{ 25 }}</b> Filmes</div>
+                    <div class="hint-text">Exibindo <b>{{ movies|length }}</b> de <b>{{ movie_len }}</b> Filmes</div>
                     <ul class="pagination">
-                        <li class="page-item disabled"><a href="#">Anterior</a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link">Próxima</a></li>
+                        <li class="page-item">
+                            {% if index > 0 %}
+                                <button class="btn" onclick="window.location.href='{{ url_for('movies', page=index - 1) }}'">Anterior</button>
+                            {% else %}
+                                <button class="btn" disabled>Anterior</button>
+                            {% endif %}
+                        </li>
+                        <li class="page-item">
+                            <button class="btn" onclick="window.location.href='{{ url_for('movies', page=index + 1) }}'">Próxima</button>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -193,6 +196,7 @@
                                 <option value="2">Estrangeira</option>
                             </select>
                         </div>
+                    </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                         <input type="submit" class="btn btn-info" value="Salvar">
@@ -211,7 +215,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <p>Tem certeza que deseja excluir o Filme "{{ selected_movie.name }}"?</p>
+                        <p>Tem certeza que deseja excluir o Filme ""?</p>
                         <p class="text-warning"><small>Essa ação não pode ser desfeita.</small></p>
                     </div>
                     <div class="modal-footer">
