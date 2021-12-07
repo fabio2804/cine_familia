@@ -1,7 +1,7 @@
-{% extends "index.html" %}
+{% extends "menu.html" %}
 {% set active_page = 'actors' %}
 
-{% block content %}
+{% block page %}
 <head>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/shared/table.css') }}">
     <script src="{{ url_for('static', filename='scripts/components/table.js') }}"></script>

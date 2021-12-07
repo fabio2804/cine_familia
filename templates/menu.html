@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/home.css') }}">
+        <!-- Graphs -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+        <script src="{{ url_for('static', filename='scripts/home.js') }}"></script>
+        <title>Home</title>
+    </head>
+
+    <body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Cine Família. Seja bem vindo, {{ session['nome'] }}!</a>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link logout" onclick="logout()">Sair</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ url_for('home') }}">
+                                <span data-feather="home"></span>
+                                Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('movies') }}">
+                                <span data-feather="film"></span>
+                                Movies
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('clients') }}">
+                                <span data-feather="users"></span>
+                                Clientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('rents') }}">
+                                <span data-feather="clipboard"></span>
+                                Aluguéis
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                {% block page %}
+                {% endblock %}
+            </main>
+        </div>
+    </div>
+
+    </body>
+{% endblock %}
