@@ -83,8 +83,18 @@ def actors():
 
 @app.route('/clients')
 def clients():
-    dict_clients = client_service.list_rents()
+    dict_clients = client_service.list_clients()
     return render_template('client.html', clients=dict_clients)
+
+@app.route('/add_client', methods=['POST'])
+def add_client():
+    client_service.insert_client(request.form.get('name'), request.form.get('email'), request.form.get('address'), request.form.get('cel'))
+    client = client_service.get_client_by_email(request.form.get('email'))
+
+    if client.empty:
+        flash('Algo deu errado! Tente novamente', 'Error')
+
+    return redirect(url_for('clients'))
 
 
 @app.route('/rents')
