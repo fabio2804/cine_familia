@@ -80,7 +80,7 @@
 <div id="addRentModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
+			<form action="{{ url_for('add_rent') }}" method="POST">
 				<div class="modal-header">						
 					<h4 class="modal-title">Adcionar Aluguel</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -88,14 +88,18 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="client">Cliente</label>
-						<select id="client" name="client">
-							<option value="{{i}}">Aqui vai o for de clientes</option>
+						<select id="client" name="clientId">
+							{% for client in clients %}
+							<option value="{{client.id}}">{{client.nome}}</option>
+							{% endfor %}
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="films">Filme(s)</label>
-						<select id="films" name="films">
-							<option value="{{i}}">Aqui vai o for de filmes</option>
+						<select id="films" name="movieId">
+							{% for movie in movies %}
+							<option value="{{movie.id}}">{{movie.titulo_da_obra}}</option>
+							{% endfor %}
 						</select>
 					</div>
 					<div class="form-group">

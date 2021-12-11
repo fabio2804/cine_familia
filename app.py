@@ -99,8 +99,16 @@ def add_client():
 
 @app.route('/rents')
 def rents():
+    dict_movies = movie_service.list_movies(1)
+    dict_clients = client_service.list_clients()
     dict_rents = rent_service.list_rents()
-    return render_template('rent.html', rents=dict_rents)
+    return render_template('rent.html', rents=dict_rents, movies=dict_movies, clients=dict_clients)
+
+@app.route('/add_rent', methods=['POST'])
+def add_rent():
+    rent_service.insert_rent(request.form.get('clientId'), request.form.get('movieId'), request.form.get('initialDate'), request.form.get('finalDate'))
+
+    return redirect(url_for('rents'))
 
 
 @app.route('/login')
